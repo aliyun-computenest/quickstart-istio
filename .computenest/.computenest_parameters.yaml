@@ -1,0 +1,12 @@
+ChartValues: {}
+HelmChartPath: helm/base
+RuntimeType: Kubernetes
+ServiceType: private
+ArtifactSourceType: HelmChart
+ServiceBuildRegion: ap-southeast-1
+RepoName: aliyun-computenest/quickstart-istio
+RegionId: cn-hangzhou
+OutputType: HelmNotes
+Owner: LYH-RAIN
+Branch: main
+Platform: github
