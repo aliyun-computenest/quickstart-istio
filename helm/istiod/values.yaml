@@ -233,7 +233,7 @@ global:
   # Default hub for Istio images.
   # Releases are published to docker hub under 'istio' project.
   # Dev builds from prow are on gcr.io
-  hub: docker.io/istio
+  hub: compute-nest-registry.cn-hangzhou.cr.aliyuncs.com/1853370294850618
   # Default tag for Istio images.
   tag: 1.20.3
   # Variant of the image to use.

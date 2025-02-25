@@ -1037,7 +1037,7 @@ Resources:
               serviceAccountName: prometheus
               containers:
                 - name: prometheus-server-configmap-reload
-                  image: "jimmidyson/configmap-reload:v0.8.0"
+                  image: "mirrors-ssl.aliyuncs.com/jimmidyson/configmap-reload:v0.8.0"
                   imagePullPolicy: "IfNotPresent"
                   args:
                     - --volume-dir=/etc/config
