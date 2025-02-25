@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="计算巢是阿里云开放给企业应用服务商的服务管理平台。服务商能够在计算巢上发布私有化部署服务，为其客户提供云上软件一键部署的能力；同时也支持全托管模式的服务，赋能服务商托管其客户资源。">
+  <title>Istio服务实例部署文档 - Aliyun 计算巢 x Demo</title>
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="css/theme.css">
+  
+
+  
+
+  
+  
+
+  
+    <script src="search/main.js"></script>
+  
+
+  
+
+  <script src="js/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <img src="./img/logo-2x.png">
+        </div>
+        <div class="nav-list">
+          <ul>
+          
+              <li><a href="#istio">Istio服务实例部署文档</a></li>
+              
+                  <li><a href="#_1">概述</a></li>
+                  
+              
+                  <li><a href="#_2">计费说明</a></li>
+                  
+              
+                  <li><a href="#_3">部署架构</a></li>
+                  
+              
+                  <li><a href="#ram">RAM账号所需权限</a></li>
+                  
+              
+                  <li><a href="#_4">部署流程</a></li>
+                  
+                      <li class="li-h3"><a href="#_5">部署步骤</a></li>
+                  
+                      <li class="li-h3"><a href="#_6">部署参数说明</a></li>
+                  
+                      <li class="li-h3"><a href="#_7">验证结果</a></li>
+                  
+              
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content theme-github">
+      
+      <div class="content-inner">        
+        
+        <h1 id="istio">Istio服务实例部署文档</h1>
+<h2 id="_1">概述</h2>
+<p>Istio是一个由 Google、IBM 和 Lyft 共同开发的开源服务网格（Service Mesh）项目，旨在简化微服务架构中的服务通信、安全性、可观察性和管理。通过部署 Istio，您可以更好地控制和监视服务之间的流量，并提供强大的安全功能。</p>
+<p>官网地址见<a href="https://istio.io">链接</a>。</p>
+<h2 id="_2">计费说明</h2>
+<p>Istio部署的为社区开源版本，目前支持已有阿里云ACK集群进行部署，没有ACK集群的用户可以先去<a href="https://cs.console.aliyun.com/">ACK控制台</a>进行创建，软件部署不收费，部署过程中创建的云资源需要付费。</p>
+<p>Istio在计算巢上的费用主要涉及：</p>
+<ul>
+<li>公网带宽费用</li>
+</ul>
+<p>计费方式包括：</p>
+<ul>
+<li>按流量计费</li>
+<li>按固定带宽计费</li>
+</ul>
+<h2 id="_3">部署架构</h2>
+<p>Istio服务为容器服务，部署在ack集群上，其中IstioBaseApplication和IstiodApplication负责Istio服务部署，KialiApplication和PrometheusApplication作为观测组件，用来展示Istio管理的微服务应用间互相调用情况。
+<img alt="img.png" src="img.png" /></p>
+<h2 id="ram">RAM账号所需权限</h2>
+<p>Istio服务需要进行ACK部署操作，若您使用RAM用户创建服务实例，需要在创建服务实例前，对使用的RAM用户的账号添加相应资源的权限。添加RAM权限的详细操作，请参见<a href="https://help.aliyun.com/document_detail/121945.html">为RAM用户授权</a>。所需权限如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>权限策略名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AliyunROSFullAccess</td>
+<td>管理资源编排服务（ROS）的权限</td>
+</tr>
+<tr>
+<td>AliyunComputeNestUserFullAccess</td>
+<td>管理计算巢服务（ComputeNest）的用户侧权限</td>
+</tr>
+<tr>
+<td>AliyunCSFullAccess</td>
+<td>管理容器服务(CS)的权限</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">部署流程</h2>
+<h3 id="_5">部署步骤</h3>
+<p>您可以在阿里云计算巢自行搜索，也可以通过下述部署链接快速到达。</p>
+<p><a href="https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&amp;ServiceId=service-e676e9ffb31849d8ae6f">部署链接</a></p>
+<h3 id="_6">部署参数说明</h3>
+<p>您在创建服务实例的过程中，需要配置服务实例信息，下文介绍Istio服务实例输入参数的详细信息。</p>
+<table>
+<thead>
+<tr>
+<th>参数组</th>
+<th>参数项</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服务实例名称</td>
+<td></td>
+<td>Istio-test</td>
+<td>实例的名称</td>
+</tr>
+<tr>
+<td>地域</td>
+<td></td>
+<td>华东1（杭州）</td>
+<td>选中服务实例的地域，建议就近选中，以获取更好的网络延时。</td>
+</tr>
+<tr>
+<td>K8s集群ID</td>
+<td></td>
+<td>ccde6deb0f612402786e611a7e1230d</td>
+<td>根据地域选择地域中用户已有的集群id</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="img_1.png" src="img_1.png" /></p>
+<h3 id="_7">验证结果</h3>
+<p>1.查看服务实例，服务实例创建成功后，部署时间大约需要3分钟。部署完成后，页面上可以看到对应的服务实例。
+<img alt="img_2.png" src="img_2.png" /></p>
+<p>2.点击详情，可以查看实例详情，具体页面如下，其中Endpoint为Istio服务对应的观测地址：
+<img alt="img_3.png" src="img_3.png" /></p>
+<p>3.点击Endpoint，可以查看Istio服务观测网页，有具体的微服务应用部署，并产生调用后，可以通过调用图进行调用链路展示。下图是官方示例BookInfo应用的微服务调用情况。
+<img alt="img_4.png" src="img_4.png" /></p>
+        
+      </div>
+
+      <div class="copyrights">© 2009-2022 Aliyun.com 版权所有</div>
+    </div>
+  </div>
+  
+  <!--
+  MkDocs version      : 1.6.1
+  Docs Build Date UTC : 2025-02-25 07:44:36.062698+00:00
+  -->
+</body>
+</html>
