@@ -18,12 +18,6 @@ Service:
         '{{ computenest::helmchart::quickstart-istio }}':
           ArtifactId: ${Artifact.Artifact_1.ArtifactId}
           ArtifactVersion: ${Artifact.Artifact_1.ArtifactVersion}
-        '{{ computenest::helmchart::quickstart-istiod }}':
-          ArtifactId: ${Artifact.Artifact_2.ArtifactId}
-          ArtifactVersion: ${Artifact.Artifact_2.ArtifactVersion}
-        '{{ computenest::helmchart::quickstart-kiali-server }}':
-          ArtifactId: ${Artifact.Artifact_2.ArtifactId}
-          ArtifactVersion: ${Artifact.Artifact_2.ArtifactVersion}
     TemplateConfigs:
       - Name: 容器集群版
         Url: 'ros_templates/template.yaml'
