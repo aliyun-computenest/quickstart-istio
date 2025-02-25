@@ -1050,7 +1050,7 @@ Resources:
                       readOnly: true
 
                 - name: prometheus-server
-                  image: "prom/prometheus:v2.41.0"
+                  image: "mirrors-ssl.aliyuncs.com/prom/prometheus:v2.41.0"
                   imagePullPolicy: "IfNotPresent"
                   args:
                     - --storage.tsdb.retention.time=15d
