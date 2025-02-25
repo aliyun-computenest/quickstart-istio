@@ -21,7 +21,7 @@ Service:
         '{{ computenest::helmchart::quickstart-istiod }}':
           ArtifactId: ${Artifact.Artifact_2.ArtifactId}
           ArtifactVersion: ${Artifact.Artifact_2.ArtifactVersion}
-        '{{ computenest::helmchart::quickstart-quickstart-kiali-server }}':
+        '{{ computenest::helmchart::quickstart-kiali-server }}':
           ArtifactId: ${Artifact.Artifact_3.ArtifactId}
           ArtifactVersion: ${Artifact.Artifact_3.ArtifactVersion}
     TemplateConfigs:
