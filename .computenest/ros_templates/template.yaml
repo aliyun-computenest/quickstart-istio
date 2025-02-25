@@ -536,7 +536,9 @@ Resources:
     Type: 'ALIYUN::CS::ClusterApplication'
     Properties:
       ClusterId:
-        Ref: ClusterId
+        Fn::GetAtt:
+          - AckOrAcsClusterModule
+          - ClusterId
       DefaultNamespace: istio-system
       YamlContent: |
         ---
