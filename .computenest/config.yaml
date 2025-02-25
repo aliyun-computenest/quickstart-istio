@@ -36,8 +36,30 @@ Artifact:
       RepoName: ${HelmChartBuilder.HelmChart_1.RepoName}
       Tag: ${HelmChartBuilder.HelmChart_1.Tag}
       RepoType: Public
+  Artifact_2:
+    ArtifactType: HelmChart
+    ArtifactName: quickstart-istiod-helm-chart
+    ArtifactProperty:
+      RepoName: ${HelmChartBuilder.HelmChart_2.RepoName}
+      Tag: ${HelmChartBuilder.HelmChart_2.Tag}
+      RepoType: Public
+  Artifact_3:
+    ArtifactType: HelmChart
+    ArtifactName: quickstart-kiali-server-helm-chart
+    ArtifactProperty:
+      RepoName: ${HelmChartBuilder.HelmChart_3.RepoName}
+      Tag: ${HelmChartBuilder.HelmChart_3.Tag}
+      RepoType: Public
 HelmChartBuilder:
   HelmChart_1:
     HelmChartPath: 'resources/artifact_resources/helm_chart/base-1.20.3.tgz'
     RepoName: base
     Tag: 1.20.3
+  HelmChart_2:
+    HelmChartPath: 'resources/artifact_resources/helm_chart/istiod-1.20.3.tgz'
+    RepoName: base
+    Tag: 1.20.3
+  HelmChart_3:
+    HelmChartPath: 'resources/artifact_resources/helm_chart/kiali-server-1.81.0.tgz'
+    RepoName: kiali-server
+    Tag: 1.81.0
